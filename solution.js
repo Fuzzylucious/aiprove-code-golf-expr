@@ -1,0 +1,2 @@
+function evalExpr(s){let i=0;function p(m=0){while(/\s/.test(s[i]||''))i++;let x;if(s[i]=='-'){i++;x=-p(3)}else if(s[i]=='('){i++;x=p();i++}else{let a=/^(?:\d+(?:\.\d*)?|\.\d+)/.exec(s.slice(i))[0];i+=a.length;x=+a}while(1){while(/\s/.test(s[i]||''))i++;let c=s[i],q=c=='+'||c=='-'?1:c=='*'||c=='/'?2:0;if(q<m||!q)return x;i++;let y=p(q+1);x=c=='+'?x+y:c=='-'?x-y:c=='*'?x*y:x/y}}return p()}
+module.exports = { evalExpr }
